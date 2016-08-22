@@ -1,7 +1,6 @@
-package main
+package pmmlReader
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"io/ioutil"
@@ -52,9 +51,9 @@ type Value struct {
 	Value string `xml:"value,attr"`
 }
 
-func main() {
+func Read(path string) (Model){
 
-	file, err := os.Open(os.Args[1]) 
+	file, err := os.Open(path) 
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -70,5 +69,5 @@ func main() {
     if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("%v", p)
+	return p
 }
